@@ -42,7 +42,7 @@ const NetFilms = () => {
         </Row>
       </div>
       <div className="mb-3">
-        <h3 className="text-white">Trending Now</h3>
+        <h3 className="text-white">Watch It Again</h3>
         <Row className="g-1">
           {movies.map((movie) => (
             <Col
@@ -60,7 +60,7 @@ const NetFilms = () => {
         </Row>
       </div>
       <div>
-        <h3 className="text-white">Trending Now</h3>
+        <h3 className="text-white">New Release</h3>
         <Row className="g-1">
           {movies.map((movie) => (
             <Col
