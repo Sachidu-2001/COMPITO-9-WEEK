@@ -1,30 +1,27 @@
 import { Component } from "react";
 
 class NetFilms extends Component {
-  render() {
-    return (
-      <div className="bg-black">
-        <div>
-          <h3 className="text-white">Trending Nows</h3>
-          <div>
-            Films API
-          </div>
-        </div>
-        <div>
-          <h3 className="text-white">Watch It Again</h3>
-          <div>
-            Films API
-          </div>
-        </div>
-        <div>
-          <h3 className="text-white">New Release</h3>
-          <div>
-            Films API
-          </div>
-        </div>
-      </div>
-    );
+    state = {
+        Movies:[],
+    }
+    
+
+    getMoviesThenCatch = () => {
+        fetch('https://www.omdbapi.com/?apikey=a69bf1d9&s=South%20Park')
+        .then((response) => {
+            
+            if(response.ok) {
+
+                return response.json()
+            } else {
+                throw new Error('Errore nella chiamata API')
+            }
+        })
+
+        .then()
+    
+    }
   }
-}
+
 
 export default NetFilms;
