@@ -1,27 +1,94 @@
-import { Component } from "react";
+import { useState, useEffect } from "react";
 
-class NetFilms extends Component {
-    state = {
-        Movies:[],
-    }
-    
+import { Row, Col } from "react-bootstrap";
 
-    getMoviesThenCatch = () => {
-        fetch('https://www.omdbapi.com/?apikey=a69bf1d9&s=South%20Park')
-        .then((response) => {
-            
-            if(response.ok) {
+const NetFilms = () => {
+  const [movies, setMovies] = useState([]);
 
-                return response.json()
-            } else {
-                throw new Error('Errore nella chiamata API')
-            }
-        })
+  useEffect(() => {
+    const fetchMovie = async () => {
+      try {
+        const response = await fetch(
+          "https://www.omdbapi.com/?apikey=a69bf1d9&s=Squid%20Game"
+        );
+        const data = await response.json();
+        setMovies(data.Search ? data.Search.slice(0, 6) : []);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
 
-        .then()
-    
-    }
-  }
+    fetchMovie();
+  });
 
+  return (
+    <div className="py-2 px-3 bg-black">
+      <div>
+        <h3 className="text-white">Trending Now</h3>
+        <Row className="g-5">
+          {movies.map((movie) => (
+            <Col
+              key={movie.imdbID}
+              xs={6}
+              md={4}
+              lg={2}
+              className="text-center"
+            >
+              <div className="card-container">
+                <img src={movie.Poster !== "N/A" ? movie.Poster : "default-image.jpg"} alt={movie.Title}/>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </div>
+      <div>
+        <h3 className="text-white">Watch It Again</h3>
+        <Row className="g-5">
+          {movies.map((movie) => (
+            <Col
+              key={movie.imdbID}
+              xs={6}
+              md={4}
+              lg={2}
+              className="text-center"
+            >
+              <div className="card-container">
+                <img
+                  src={
+                    movie.Poster !== "N/A" ? movie.Poster : "default-image.jpg"
+                  }
+                  alt={movie.Title}
+                />
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </div>
+      <div>
+        <h3 className="text-white">New Release</h3>
+        <Row className="g-5">
+          {movies.map((movie) => (
+            <Col
+              key={movie.imdbID}
+              xs={6}
+              md={4}
+              lg={2}
+              className="text-center"
+            >
+              <div className="card-container">
+                <img
+                  src={
+                    movie.Poster !== "N/A" ? movie.Poster : "default-image.jpg"
+                  }
+                  alt={movie.Title}
+                />
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </div>
+    </div>
+  );
+};
 
 export default NetFilms;
