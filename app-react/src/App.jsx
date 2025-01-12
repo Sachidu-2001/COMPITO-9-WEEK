@@ -1,4 +1,6 @@
+import NetHeader from "./Components/NetHeader";
 
+import NetFooter from "./Components/NetFooter";
 
 import NetFilms from "./Components/NetFilms";
 
@@ -11,6 +13,8 @@ function App() {
     <>
       <NetNavBar />
       <NetHeader />
+      <NetFilms />
+      <NetFooter />
     </>
   );
 }
