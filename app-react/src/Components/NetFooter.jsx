@@ -5,7 +5,7 @@ import * as Icon from "react-bootstrap-icons";
 class NetFooter extends Component {
   render() {
     return (
-      <div className="bg-black d-flex justify-content-center">
+      <div className="bg-black d-flex justify-content-center pt-3">
         <div>
           <div className="text-secondary">
             <div className="d-flex mb-2">
